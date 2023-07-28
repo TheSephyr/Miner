@@ -1,5 +1,6 @@
-extends Window
+extends Node2D
 
+@onready var dialogWindow = $DialogWindow
 var level = 1
 var currentProduction = 5
 var upgradeCost = 5
@@ -12,3 +13,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_close_button_button_down():
+	_close_window()
+	
+func _open_window():
+	print("Opening window")
+	dialogWindow.visible = true
+	
+func _close_window():
+	dialogWindow.visible = false
+
+
+func _on_window_close_requested():
+	_close_window()
+	

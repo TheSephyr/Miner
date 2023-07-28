@@ -11,6 +11,7 @@ size = Vector2(129, 130)
 script = ExtResource("2_v0wev")
 
 [node name="UpgradeWindow" parent="." instance=ExtResource("2_v5lmh")]
+script = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l45ll")
