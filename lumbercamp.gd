@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var lumbercampDialg = $Window
+@onready var lumbercampDialog = $Window
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,21 @@ func _process(delta):
 
 
 func _on_static_body_2d_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		lumbercampDialog.visible = true
+		print("click")
+
+
+func _on_static_body_2d_mouse_entered():
+	print("mouseEntered")
 	pass # Replace with function body.
+
+
+func _on_window_mouse_entered():
+	print("Window")
+	pass # Replace with function body.
+
+
+func _on_window_close_requested():
+	lumbercampDialog.visible = false
+	print("close")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://onne1wqliiwl"]
+
+[ext_resource type="Script" path="res://BuildingWindow.gd" id="1_ymgay"]
+
+[node name="Window" type="Window"]
+title = "Upgrade Lumbercamp"
+initial_position = 1
+size = Vector2i(400, 200)
+script = ExtResource("1_ymgay")
+
+[node name="InfoVBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProductionHBoxContainer" type="HBoxContainer" parent="InfoVBoxContainer"]
+layout_mode = 2
+
+[node name="ProductionLabel" type="Label" parent="InfoVBoxContainer/ProductionHBoxContainer"]
+layout_mode = 2
+text = "Production:"
+
+[node name="ProducationValueLabel" type="Label" parent="InfoVBoxContainer/ProductionHBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="CostHBoxContainer2" type="HBoxContainer" parent="InfoVBoxContainer"]
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="InfoVBoxContainer/CostHBoxContainer2"]
+layout_mode = 2
+text = "Cost:"
+
+[node name="CostValueLabel" type="Label" parent="InfoVBoxContainer/CostHBoxContainer2"]
+layout_mode = 2
+text = "5"
+
+[node name="LevelHBoxContainer" type="HBoxContainer" parent="InfoVBoxContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="InfoVBoxContainer/LevelHBoxContainer"]
+layout_mode = 2
+text = "Level:"
+
+[node name="LevelValueLabel" type="Label" parent="InfoVBoxContainer/LevelHBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="UpgradeButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Upgrade"
+
+[node name="CloseButton" type="Button" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 50.0
+grow_vertical = 0
+text = "Close"

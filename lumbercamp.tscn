@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgk2711fs817b"]
+[gd_scene load_steps=5 format=3 uid="uid://bgk2711fs817b"]
 
 [ext_resource type="Texture2D" uid="uid://tcxawwtwjkef" path="res://icon.svg" id="1_l45ll"]
 [ext_resource type="Script" path="res://lumbercamp.gd" id="2_v0wev"]
+[ext_resource type="PackedScene" uid="uid://onne1wqliiwl" path="res://upgrade_window.tscn" id="2_v5lmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q28j"]
 size = Vector2(129, 130)
@@ -9,18 +10,16 @@ size = Vector2(129, 130)
 [node name="Lumbercamp" type="Node2D"]
 script = ExtResource("2_v0wev")
 
+[node name="UpgradeWindow" parent="." instance=ExtResource("2_v5lmh")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l45ll")
 
-[node name="Window" type="Window" parent="Sprite2D"]
-title = "Upgrade Lumbercamp"
-initial_position = 1
-visible = false
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_2q28j")
 
-[connection signal="input_event" from="StaticBody2D" to="Sprite2D" method="_on_static_body_2d_input_event"]
+[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
+[connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered"]
