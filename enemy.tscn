@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://balotneb2o1ev"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_v03ua"]
+[ext_resource type="Texture2D" uid="uid://tcxawwtwjkef" path="res://icon.svg" id="1_ynx3s"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_v03ua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ynx3s")

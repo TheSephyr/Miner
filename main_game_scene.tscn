@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi731yxnuinwa"]
+[gd_scene load_steps=4 format=3 uid="uid://bi731yxnuinwa"]
 
 [ext_resource type="PackedScene" uid="uid://bgk2711fs817b" path="res://lumbercamp.tscn" id="1_2uc78"]
 [ext_resource type="Script" path="res://main_game_scene.gd" id="1_jf4tm"]
+[ext_resource type="PackedScene" uid="uid://cog5qeic6x1nh" path="res://hero.tscn" id="3_p86in"]
 
 [node name="MainGameScene" type="Node2D"]
 script = ExtResource("1_jf4tm")
@@ -35,5 +36,8 @@ text = "Round:"
 [node name="RoundCounterLabel" type="Label" parent="CanvasLayer/RoundHBoxContainer"]
 layout_mode = 2
 text = "XXX"
+
+[node name="Hero" parent="." instance=ExtResource("3_p86in")]
+position = Vector2(260, 443)
 
 [connection signal="button_down" from="CanvasLayer/NextRoundButton" to="." method="_on_next_round_button_button_down"]
