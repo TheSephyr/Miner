@@ -2,6 +2,7 @@ extends Node2D
 
 const tileScene = preload("res://tile.tscn")
 const spawn_tile = preload("res://spawn_tile.tscn")
+const enemyScene = preload("res://enemy.tscn")
 
 var width: int = 6
 var height: int = 5
@@ -14,6 +15,7 @@ var spawns: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generateGrid()
+	spawnEnemies()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,3 +55,13 @@ func gridToWorld(_pos: Vector2) -> Vector2:
 
 func worldToGrid(_pos: Vector2) -> Vector2:
 	return floor(_pos / cellSize)
+	
+func spawnEnemies():
+	print(spawns.size())
+	var rand_value = randi() % spawns.size()
+	print(rand_value)
+	var enemyStart = gridToWorld(spawns.keys()[rand_value])
+	var enemy = enemyScene.instantiate()
+	enemy.position = enemyStart
+	add_child(enemy)
+	
