@@ -8,3 +8,7 @@ script = ExtResource("1_wm3v2")
 
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource("1_173vy")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

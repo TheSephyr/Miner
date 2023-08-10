@@ -56,12 +56,12 @@ func gridToWorld(_pos: Vector2) -> Vector2:
 func worldToGrid(_pos: Vector2) -> Vector2:
 	return floor(_pos / cellSize)
 	
-func spawnEnemies():
+func spawnEnemies() -> Node2D:
 	print(spawns.size())
 	var rand_value = randi() % spawns.size()
 	print(rand_value)
 	var enemyStart = gridToWorld(spawns.keys()[rand_value])
 	var enemy = enemyScene.instantiate()
 	enemy.position = enemyStart
-	add_child(enemy)
+	return enemy
 	
