@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmfbd0dxqcp86"]
+
+[ext_resource type="Texture2D" uid="uid://tcxawwtwjkef" path="res://icon.svg" id="1_eqa3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tasjh"]
+size = Vector2(127, 128)
+
+[node name="EndZone" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.741176, 0, 1, 1)
+rotation = 1.5708
+texture = ExtResource("1_eqa3d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tasjh")

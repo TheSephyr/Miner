@@ -2,6 +2,7 @@ extends Node2D
 
 const tileScene = preload("res://tile.tscn")
 const spawn_tile = preload("res://spawn_tile.tscn")
+const endZoneTile = preload("res://end_zone.tscn")
 const enemyScene = preload("res://enemy.tscn")
 
 var width: int = 6
@@ -11,6 +12,8 @@ var showDebug: bool = false
 
 var grid: Dictionary = {}
 var spawns: Dictionary = {}
+var endZones: Dictionary = {}
+var spwansToEndZones: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,10 +47,21 @@ func generateGrid() -> void:
 	
 	for y in height:
 		var _pos = Vector2(width, y)
-		var spwanTile = spawn_tile.instantiate()
+		var spwanTile: Node2D = spawn_tile.instantiate()
 		spwanTile.position = gridToWorld(Vector2(width, y))
 		add_child(spwanTile)
 		spawns[_pos] = spwanTile
+		print("test")
+		
+		var posEndZone = Vector2(-1, y)
+		var endZoneTile: Node2D = endZoneTile.instantiate()
+		endZoneTile.position = gridToWorld(posEndZone)
+		print_debug(endZoneTile.position)
+		add_child(endZoneTile)
+		endZones[posEndZone] = endZoneTile
+		
+		var spawnToEnd: Array = [spwanTile, endZoneTile]
+		spwansToEndZones.append(spawnToEnd)
 		
 
 func gridToWorld(_pos: Vector2) -> Vector2:
@@ -55,6 +69,9 @@ func gridToWorld(_pos: Vector2) -> Vector2:
 
 func worldToGrid(_pos: Vector2) -> Vector2:
 	return floor(_pos / cellSize)
+
+func getSpwansToEndZones() -> Array:
+	return spwansToEndZones
 	
 func spawnEnemies() -> Node2D:
 	print(spawns.size())
