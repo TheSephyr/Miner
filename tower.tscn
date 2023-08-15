@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq5qhup33bptt"]
+
+[ext_resource type="Script" path="res://tile.gd" id="1_u5ams"]
+[ext_resource type="Texture2D" uid="uid://tcxawwtwjkef" path="res://icon.svg" id="2_il2oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi1oi"]
+size = Vector2(128, 128)
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_u5ams")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.482353, 0, 1)
+position = Vector2(64, 64)
+texture = ExtResource("2_il2oi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(64, 64)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_oi1oi")
+
+[node name="BuildDialog" type="Window" parent="."]
+title = "Building Dialog"
+initial_position = 1
+size = Vector2i(400, 200)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuildDialog"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 66.0
+grow_horizontal = 2
+
+[node name="Tower" type="Button" parent="BuildDialog/VBoxContainer"]
+layout_mode = 2
+text = "Tower"
+
+[node name="Farm" type="Button" parent="BuildDialog/VBoxContainer"]
+layout_mode = 2
+text = "Farm"
+
+[node name="FiringStart" type="Marker2D" parent="."]
+position = Vector2(64, 64)
+
+[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event" flags=18]
+[connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_exited" flags=18]
+[connection signal="close_requested" from="BuildDialog" to="." method="_on_build_dialog_close_requested" flags=18]
+[connection signal="button_down" from="BuildDialog/VBoxContainer/Tower" to="." method="_on_tower_button_down" flags=18]
+[connection signal="button_down" from="BuildDialog/VBoxContainer/Farm" to="." method="_on_farm_button_down" flags=18]

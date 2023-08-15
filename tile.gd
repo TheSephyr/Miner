@@ -1,5 +1,6 @@
 extends Node2D
 
+const towerScene = preload("res://tower.tscn")
 @onready var sprite = $Sprite2D
 @onready var buildDialog = $BuildDialog
 var hover: bool = false
@@ -40,8 +41,12 @@ func _on_build_dialog_close_requested():
 
 
 func _on_tower_button_down():
-	currentType = TowerType.TOWER
-	updateColor()
+	var tower: Node2D = towerScene.instantiate()
+	print(position)
+	tower.position = position
+	print(tower.position)
+	get_parent().add_child(tower)
+	queue_free()
 
 
 
